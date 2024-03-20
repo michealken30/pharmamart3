@@ -1,0 +1,36 @@
+{%extends 'layout.html' %}
+
+{% block content %}
+{% include '_message.html'%}
+
+<div class="container">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2 class="text-center bg-info p-2">Update Product</h2>
+        {% from "_formhelpers.html" import render_field %}
+        <form action="" method ='POST' enctype="multipart/form-data">
+
+            {{ form.hidden_tag() }}
+
+            {{ render_field(form.name, class="form-control", placeholder='Add product name') }}
+            {{ render_field(form.price, class="form-control", placeholder='Add product price') }}
+            {{ render_field(form.stock, class="form-control", placeholder='Add product stock') }}
+            {{ render_field(form.description, class="form-control", placeholder='Add product details') }}
+
+            <label for="category"> Add a  Category </label>
+            <select name="category" id="category" class="form-control" required>
+                <option value="{{product.category_id}}">{{product.category.name}}</option>
+                {% for category in categories %}
+                <option value="{{category.id}}">{{category.name}}</option>
+                {% endfor %}
+
+            </select>
+
+
+
+            {{ render_field(form.submit, class="btn btn-outline-info") }}
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endblock content%}

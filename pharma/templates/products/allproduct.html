@@ -1,0 +1,221 @@
+{% extends 'base.html'%}
+{% block tittle %}
+<title>All Products</title>
+{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/beauty.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/modal.css') }}">
+{% endblock %}
+{% block content %}
+<main>
+   <div class="container product-cont">
+      <P class="product-style" >Products <span class="health-style">> ALL PRODUCTS</span></P>
+   </div>
+   <div class="two-sections1">
+      <div class="first-section1">
+         <div class="stock-stat">
+            <p>Stock Status</p>
+         </div>
+         <div class="stock-flex">
+            <div class="stock-div stock-div1">
+               <span class="stock-span">IN STOCK</span>
+            </div>
+            <div class="stock-div">
+               <span class="stock-span">OUT OF STOCK</span>
+            </div>
+         </div>
+         <div class="hot-deals-div">Hot Deals</div>
+         <div class="sale-box3">
+            <input type="checkbox" class="sale-box" />
+            <span class="sale">On Sale</span>
+         </div>
+         <div class="cat-div">
+            <p class="pdt-class">Product Categories</p>
+         </div>
+         <div>
+            <p class="back-shop">Back to Shop</p>
+            <div class="sale-box4">
+               <input class="sale-box" type="checkbox" />
+               <span>All Product</span>
+            </div>
+            <div class="sale-box4">
+               <input class="sale-box" type="checkbox" />
+               <span>Supermarket</span>
+            </div>
+            <div class="sale-box4">
+               <input class="sale-box" type="checkbox" />
+               <span>Health</span>
+            </div>
+            <div class="sale-box4">
+               <input class="sale-box" type="checkbox" />
+               <span>Beauty</span>
+            </div>
+         </div>
+         <div class="cat-div know-numb">
+            <p class="pdt-class ">Know Your Numbers</p>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Blood Glucose Check</span></a>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Blood Pressure Check</span></a>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Body Mass Index</span></a>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Ovulation Days</span></a>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Fertile Days</span></a>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Calorie Check</span></a>
+         </div>
+         <div class="cat-div know-numb">
+            <p class="pdt-class ">Our Services</p>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Consult a Doctor</span></a>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Shop and Order</span></a>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Upload a Prescription</span></a>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Consult a Pharmacist</span></a>
+         </div>
+         <div class="sale-box4">
+            <a href=""><span>Free Medical Check Up</span></a>
+         </div>
+      </div>
+      <div class="second-section">
+         <div class="container">
+            <div class="grid-class3 js-grid-class3">
+               {% for product in products.items %}
+               <div class="grid-class3-1 grid-class3-5">
+                  <div class="img-div">
+                     <img
+                        class="image-size"
+                        src="{{url_for('static', filename='images1/' + product.image)}}"
+                        alt=""
+                        />
+                  </div>
+                  <div class="icon-position">
+                     <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="des-style">
+                     <div class="item-link-cls">
+                        <a href="">{{product.name}}</a>
+                     </div>
+                     <div class="item-price-cls">
+                        <p class="item-price">${{product.price}}</p>
+                     </div>
+                     <div class="btn-desc-class">
+                        <button
+                           type="button"
+                           class="btn btn-outline-secondary btn1-tag"
+                           >
+                        <a href="#" class="minus js-minus-quantity" data-product-id = "${product.id}">&#8722;</a>
+                        <span class="one-span quantity-count-${product.id}">1</span>
+                        <a href="#" class="js-add-quantity" data-product-id = "${product.id}">+</a>
+                        </button>
+                        <button
+                           type="button"
+                           data-bs-toggle="modal"
+                           data-bs-target="#exampleModal"
+                           class="btn btn-outline-secondary btn1-tag js-btn-cart" data-product-id = "${product.id}"
+                           >
+                        <span>ADD TO CART</span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</main>
+<section>
+   <div class=" text-center mt-0 mb-1">
+      {% if products.has_prev %}
+      <a href="{{ url_for('allproduct', page=products.prev_num )}}" class="btn btn-outline-info btn-sm mt-0 mx-0">Prev</a>
+      {% endif %}
+      {% for page_num in products.iter_pages() %}
+      {% if page_num %}
+      {% if products.page == page_num %}
+      <a href="{{url_for('allproduct', page=page_num )}}" class="btn btn-info btn-sm mt-0 mx-0">{{ page_num }}</a>
+      {% else %}
+      <a href="{{ url_for('allproduct', page=page_num )}}" class="btn btn-outline-info btn-sm mt-0 mx-0">{{ page_num }}</a>
+      {% endif %}
+      {% else %}
+      ...
+      {% endif %}
+      {% endfor %}
+      {% if products.has_next %}
+      <a href="{{ url_for('allproduct', page=products.next_num )}}" class="btn btn-outline-info btn-sm mt-0 mx-0">Next</a>
+      {% endif %}
+   </div>
+</section>
+<div
+   class="modal fade"
+   id="exampleModal"
+   tabindex="-1"
+   aria-labelledby="exampleModalLabel"
+   aria-hidden="true"
+   >
+   <div class="modal-dialog mr-0">
+      <div class="modal-content">
+         <div class="instock7">
+            <i class="fa-solid fa-check"></i>
+            <span>Item Added to cart</span>
+         </div>
+         <div class="modal-header head-mode">
+            <div>
+               <h5 class="modal-title" id="exampleModalLabel">Your Order</h5>
+               <p class="sub-modal">Subtotal</p>
+            </div>
+            <div class="mt-2">
+               <div class="sub-modal4"><a class="sub-modal1" style="color: black" >View Cart</a></div>
+               <span class="sub-modal2">#29000</span>
+            </div>
+         </div>
+         <div class="mb-3 mx-3 mt-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Add a note to your order</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+         </div>
+         <button type="button" class="btn btn-success ">Checkout</button>
+         <div class="pdt-modal">
+            Products (2)
+         </div>
+         <div class="modal-body">
+            <div class= "dis-2">
+               <div class="check-img-1">
+                  <div class="card check-rel" style="width: 5rem">
+                     <img
+                        src="./images/beauty-products/Bio-Oil-60ml.jpeg"
+                        class="card-img-top check-img-wd"
+                        alt="..."
+                        />
+                     <span class="check-abosolute rounded-circle">1</span>
+                  </div>
+               </div>
+               <div class="margin-para">
+                  <p class="para7">this is a coconut which is good for you</p>
+               </div>
+               <div class="mode-amount">
+                  <span class="">#1000</span>
+                  <a class="anchor-block" href="">Remove</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="{{ url_for('static', filename='scripts/all-products.js') }}"></script>
+{% endblock %}

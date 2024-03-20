@@ -1,0 +1,156 @@
+.cat-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.color-cls {
+  color: white;
+}
+.cat4-div {
+  background-color: #f50035;
+  height: 70px;
+  width: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.cat4-div a {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.cat2-div {
+  background-color: #37cb61;
+}
+
+.cat3-div {
+  background-color: #343a40;
+}
+
+.grid-class1 {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  margin-top: 12px;
+  column-gap: 10px;
+}
+
+.large-div {
+  background-image: url("large.jpg");
+  background-position: center;
+  height: 500px;
+  background-size: cover;
+  border-radius: 3px;
+}
+.small-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+.item1 {
+  background-image: url("small1.jpg");
+  height: 250px;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.item2 {
+  background-image: url("small2.jpg");
+  height: 240px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 3px;
+}
+
+.select-cat {
+  background-color: #f50035;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 20px;
+  color: white;
+  font-size: 36px;
+  padding-top: 15px;
+  font-weight: 600;
+  border-radius: 3px;
+}
+
+.grid-class3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  margin: 10px 20px;
+}
+
+.grid-class3-5 {
+  height: 380px;
+  border-radius: 5px;
+  border: 1px solid rgb(231, 226, 226);
+}
+
+.grid-class3-4 {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.img-div {
+  margin-top: 30px;
+}
+
+.image-size {
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 280px;
+  margin-top: 10px;
+}
+
+.bt-div {
+  padding: 7px 13px;
+  margin-bottom: 5px;
+  background-color: #37cb61;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.bt-div2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-div1,
+.btn-div3 {
+  background-color: #37cb61;
+}
+
+.btn-div2,
+.btn-div4 {
+  background-color: #f50035;
+}
+
+.foo-div {
+  background-color: #f50035;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.copy-cls {
+  color: #ffffffb3;
+}

@@ -1,0 +1,109 @@
+.modal-dialog {
+  margin-top: 0;
+  right: 0px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-div,
+.total-bill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.third-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal {
+  right: 0;
+  width: 25%;
+}
+
+.dis-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.margin-para {
+  margin-top: 2px;
+  padding-left: 2px;
+  margin-right: 2px;
+  max-width: 200px;
+}
+
+.para7 {
+  margin-left: 2px;
+  width: 150px;
+  color: black;
+  font-weight: 600;
+}
+
+.check-img-1 {
+  margin-right: 2px;
+}
+
+.mode-amount {
+  margin-top: 2px;
+  color: black;
+  font-weight: 500;
+}
+
+.anchor-block {
+  display: block;
+  color: rgb(179, 169, 169);
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.instock7 {
+  color: rgb(177, 0, 168);
+  font-size: 13px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.sub-modal {
+  margin-top: 10px;
+}
+
+.sub-modal1 {
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.sub-modal1:hover {
+  text-decoration: underline;
+}
+
+.sub-modal2 {
+  font-weight: 600;
+}
+
+.sub-modal4 {
+  margin-bottom: 10px;
+}
+
+.btn-success {
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+}
+
+.pdt-modal {
+  margin-top: 4px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  font-weight: 600;
+  color: rgb(170, 163, 163);
+}

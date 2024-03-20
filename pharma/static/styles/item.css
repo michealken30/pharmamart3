@@ -1,0 +1,123 @@
+body {
+  background-color: white;
+}
+
+.item7-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+}
+
+.item7-arrow a {
+  color: rgb(109, 117, 126);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.item7-arrow {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.brand-fact {
+  color: rgb(72, 79, 86);
+}
+
+.brand-fact2 {
+  color: black;
+}
+
+.btn-dark {
+  margin-left: 10px;
+}
+
+.item7-para {
+  font-size: 15px;
+  color: rgb(72, 79, 86);
+  margin-top: 10px;
+}
+
+.item7-star-flex a {
+  color: black;
+  font-weight: 500;
+}
+.instock7 {
+  color: rgb(177, 0, 168);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.item7-name {
+  font-weight: 400;
+}
+
+.item7-price {
+  color: rgb(72, 79, 86);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.fa-star,
+.fa-plus {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.fa-star {
+  color: rgb(177, 0, 168);
+}
+
+.item7-arrow2 {
+  margin-right: 12px;
+}
+
+.item7-star-flex {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(218, 215, 215);
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.item7-share {
+  display: flex;
+  margin-top: 25px;
+}
+
+.item7-share a {
+  color: rgb(109, 117, 126);
+  font-size: 18px;
+}
+
+.item7-rel-pdt {
+  color: rgb(72, 79, 86);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.item7-mt {
+  margin-top: 70px;
+}
+
+.item7-grid5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  margin: 10px 20px;
+  row-gap: 20px;
+  column-gap: 10px;
+  margin-bottom: 0px;
+}
+
+.grid-class3-5 {
+  border: none;
+}
+
+.item-link-cls a {
+  color: #0f1111;
+}
+
+.link-disp a {
+  color: #4f5252;
+}

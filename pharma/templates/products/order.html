@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/order.css') }}" />
+{% endblock %}
+{% block tittle %}
+<title>Order</title>
+{% endblock %}
+{% block content %}
+<section>
+   <div class="container cat-div">
+      <div class="cat1-div cat4-div"><a href="">SHOP BY CATEGORY</a></div>
+      <div class="cat2-div cat4-div">
+         <a href="">BROWSE ALL</a>
+      </div>
+      <div class="cat3-div cat4-div">
+         <a href="">CALL TO ORDER</a>
+      </div>
+   </div>
+</section>
+<section>
+   <div class="container">
+      <div class="grid-class1">
+         <div class="large-div"></div>
+         <div class="small-div">
+            <div class="item1"></div>
+            <div class="item2"></div>
+         </div>
+      </div>
+   </div>
+</section>
+<section>
+   <div class="container">
+      <div class="select-cat">
+         <p>SELECT A CATEGORY</p>
+      </div>
+   </div>
+</section>
+<section>
+   <div class="container">
+      <div class="grid-class3">
+         <div class="grid-class3-1 grid-class3-5">
+            <div class="img-div">
+               <img
+                  class="image-size"
+                  src="{{ url_for('static', filename='styles/allproducts..png') }}"
+                  alt=""
+                  />
+            </div>
+            <div class="bt-div2">
+               <a href="./allproduct.html"
+                  ><button class="bt-div btn-div1">All Product</button></a
+                  >
+            </div>
+         </div>
+         <div class="grid-class3-2 grid-class3-5">
+            <div class="img-div">
+               <img class="image-size" src="{{ url_for('static', filename='styles/beuty.jpg') }}" alt="" />
+            </div>
+            <div class="bt-div2">
+               <a href="./beauty.html"
+                  ><button class="bt-div btn-div2">Beauty Category</button></a
+                  >
+            </div>
+         </div>
+         <div class="grid-class3-3 grid-class3-5">
+            <div class="img-div">
+               <img class="image-size" src="{{ url_for('static', filename='styles/supermart.jpg') }}" alt="" />
+            </div>
+            <div class="bt-div2">
+               <a href="./market.html"
+                  ><button class="bt-div btn-div3">
+               Supermarket Category
+               </button></a
+                  >
+            </div>
+         </div>
+         <div class="grid-class3-4 grid-class3-5">
+            <div class="img-div">
+               <img class="image-size" src="{{ url_for('static', filename='styles/health.jpg') }}" alt="" />
+            </div>
+            <div class="bt-div2">
+               <a href="./health.html"
+                  ><button class="bt-div btn-div4">Health Category</button></a
+                  >
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+{% endblock %}

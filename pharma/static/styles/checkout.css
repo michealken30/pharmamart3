@@ -1,0 +1,215 @@
+.heading-bg {
+  height: 100px;
+  width: 100%;
+  background-color: rgb(226, 159, 159);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 550px;
+}
+
+.check2 {
+  background-color: rgb(221, 212, 212);
+  position: sticky;
+  top: 110px;
+  width: 550px;
+
+  height: 540px;
+}
+
+.flex-check {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgb(196, 193, 193);
+
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+.your-order {
+  margin-left: 30px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.dev-label {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.flex-check a {
+  color: rgb(14, 139, 14);
+  cursor: pointer;
+}
+
+.flex-check a:hover {
+  text-decoration: underline;
+}
+
+.flex-check-display {
+  display: grid;
+  grid-template-columns: 100px 1fr 50px;
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.check-img-wd {
+  width: 100%;
+  object-fit: contain;
+}
+
+.check-end1 {
+  margin-top: 30px;
+}
+
+.check-para3 {
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+.check-img-1 {
+  position: relative;
+}
+
+.check-abosolute {
+  position: absolute;
+  right: -6px;
+  top: -10px;
+  background-color: rgba(0, 0, 0, 0.56);
+  color: white;
+
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.check2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-style {
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.coupoun-input {
+  padding: 19px;
+  border: none;
+  padding-right: 170px;
+  border-radius: 3px;
+}
+
+.coupon-btn {
+  padding: 13px 20px;
+  margin-left: 10px;
+  font-size: 22px;
+}
+
+.check-total-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 25px;
+}
+
+.check-total2 {
+  text-align: right;
+}
+
+.anchor-block {
+  display: block;
+  color: rgb(212, 160, 160);
+  margin-top: 1px;
+  font-size: 14px;
+}
+
+.reverse-text {
+  direction: rtl;
+}
+
+.check-bold {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.group-top {
+  margin-top: 40px;
+}
+
+.pass-check {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.check3 {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.check10 {
+  margin-top: 20px;
+}
+
+#inputState {
+  height: 60px;
+}
+
+.check-select1 {
+  margin-top: 30px;
+  margin-bottom: 0px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.check-select5 {
+  padding-bottom: 20px;
+  color: rgb(133, 127, 127);
+}
+
+.ft-size {
+  font-weight: 600;
+  margin-bottom: 60px;
+}
+
+.flex-check5 {
+}
+
+.opt-check {
+  margin-top: 0;
+}
+
+.grid-option {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.delivery-option {
+  display: flex;
+}
+
+.delivery-options-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: black;
+  margin-bottom: 10px;
+}
+.delivery-option-date {
+  color: rgb(3, 144, 3);
+}
+
+.check-input input {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.check-select {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
