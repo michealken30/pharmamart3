@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% block tittle %}
+<title>Search</title>
+{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/beauty.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/modal.css') }}">
+{% endblock %}
+{% block content %}
+
+            <div class="grid-class3 js-grid-class3">
+               {% for product in products %}
+               <div class="grid-class3-1 grid-class3-5">
+                  <div class="img-div">
+                     <img
+                        class="image-size"
+                        src="{{url_for('static', filename='images1/' + product.image)}}"
+                        alt=""
+                        />
+                  </div>
+                  <div class="icon-position">
+                     <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="des-style">
+                     <div class="item-link-cls">
+                        <a href="{{url_for('item',id=product.id)}}">{{product.name}}</a>
+                     </div>
+                     <div class="item-price-cls">
+                        <p class="item-price">${{product.price}}</p>
+                     </div>
+                     <div class="btn-desc-class">
+                        <form action="{{url_for('AddCart')}}" method="post">
+                         <input type="hidden" name="product_id" value="{{product.id}}">
+                         <button class="btn btn-outline-secondary btn1-tag col-6 ml-0 " type="submit">
+                         ADD TO CART
+                       </button>
+                         <label for="">Qty:</label>
+                         <input type="number" name="quantity" id="" value="1" min="1" max="{{product.stock}}">
+                       </form>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+{% endblock %}

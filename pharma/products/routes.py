@@ -1,6 +1,6 @@
 from flask import render_template, session, request, redirect, url_for, flash
 
-from pharma import db, app
+from pharma import db, app, search
 from .models import Category, Addproduct
 from .forms import Addproducts
 
@@ -21,7 +21,7 @@ def save_picture(form_picture):
 
 
 @app.route('/home')
-@app.route("/")
+#@app.route("/")
 def home():
 
     return render_template('products/index.html')
@@ -32,6 +32,12 @@ def allproduct():
     page = request.args.get('page',1,type=int)
     products = Addproduct.query.paginate(page=page, per_page=12)
     return render_template('products/allproduct.html', title='All Products',products=products)
+
+@app.route('/result')
+def result():
+    searchword = request.args.get('q')
+    products = Addproduct.query.msearch(searchword, fields=['name','desc'], limit=6)
+    return render_template('products/result.html', products=products)
 
 @app.route('/market')
 def market():
@@ -149,3 +155,11 @@ def deleteproduct(id):
         return redirect(url_for('admin'))
     flash(f'Cant delete the product', 'danger')
     return redirect(url_for('admin'))
+
+
+@app.route('/item/<int:id>')
+def item(id):
+    product = Addproduct.query.get_or_404(id)
+    return render_template('products/item.html', product=product)
+
+

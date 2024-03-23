@@ -108,28 +108,20 @@
                   </div>
                   <div class="des-style">
                      <div class="item-link-cls">
-                        <a href="">{{product.name}}</a>
+                        <a href="{{url_for('item',id=product.id)}}">{{product.name}}</a>
                      </div>
                      <div class="item-price-cls">
-                        <p class="item-price">${{product.price}}</p>
+                        <p class="item-price">₦{{product.price}}</p>
                      </div>
                      <div class="btn-desc-class">
-                        <button
-                           type="button"
-                           class="btn btn-outline-secondary btn1-tag"
-                           >
-                        <a href="#" class="minus js-minus-quantity" data-product-id = "${product.id}">&#8722;</a>
-                        <span class="one-span quantity-count-${product.id}">1</span>
-                        <a href="#" class="js-add-quantity" data-product-id = "${product.id}">+</a>
-                        </button>
-                        <button
-                           type="button"
-                           data-bs-toggle="modal"
-                           data-bs-target="#exampleModal"
-                           class="btn btn-outline-secondary btn1-tag js-btn-cart" data-product-id = "${product.id}"
-                           >
-                        <span>ADD TO CART</span>
-                        </button>
+                        <form action="{{url_for('AddCart')}}" method="post">
+                         <input type="hidden" name="product_id" value="{{product.id}}">
+                         <button class="btn btn-outline-secondary btn1-tag col-6 ml-0 " type="submit">
+                         ADD TO CART
+                       </button>
+                         <label for="">Qty:</label>
+                         <input type="number" name="quantity" id="" value="1" min="1" max="{{product.stock}}">
+                       </form>
                      </div>
                   </div>
                </div>

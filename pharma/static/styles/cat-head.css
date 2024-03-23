@@ -29,11 +29,7 @@ a {
   color: white;
 }
 
-.nav-icon,
-a:hover {
-  color: white;
-  text-decoration: none;
-}
+
 
 .mg-icon {
   font-size: 16px;
@@ -45,6 +41,7 @@ a:hover {
 }
 .sign-margin {
   margin-left: 30px;
+  color: white;
 }
 
 .sign-in {
@@ -89,4 +86,11 @@ a:hover {
   background-color: rgb(15, 17, 17);
   z-index: 100;
   color: white;
+}
+
+.nav-icon
+a {
+  margin-right: 15px;
+  color: white;
+  text-decoration: none;
 }

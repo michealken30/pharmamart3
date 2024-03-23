@@ -1,0 +1,342 @@
+{% extends 'base.html'%}
+{% block tittle %}
+<title>ITEM</title>
+{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/beauty.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/modal.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/item.css') }}" />
+{% endblock %}
+
+{% block content %}
+        <main>
+      <section>
+        <div class="item7-grid mt-0">
+          <div class="item7-section1 ml-5">
+            <img
+              src="{{url_for('static', filename='images1/' + product.image)}}"
+              alt="{{product.name}}" width="500" height="500" class="ml-5"
+            />
+          </div>
+          <div class="item7-section2">
+            <div class="item7-arrow">
+              <div class="item7-arrow2"><a href="">SHOP</a> <span>></span></div>
+
+              <div class="item7-arrow2">
+                <a href="">{{product.category.name}}</a> <span>></span>
+              </div>
+
+              <div class="item7-arrow2"><a href="">{{product.name}}</a></div>
+            </div>
+            <div>
+              <span class="brand-fact"
+                >Category: <span class="brand-fact2">{{product.category.name}}</span></span
+              >
+              <h2 class="item7-name">
+                {{product.name}}
+              </h2>
+            </div>
+            <div>
+              <p class="item7-price">₦{{product.price}}</p>
+            </div>
+            <div class="instock7">
+              <i class="fa-solid fa-check"></i>
+              <span>IN STOCK</span>
+            </div>
+            <div>
+
+              <form action="{{url_for('AddCart')}}" method="post">
+                <input type="hidden" name="product_id" value="{{product.id}}">
+                <button class="btn btn-dark col-6 ml-0" type="submit">
+                ADD TO CART
+              </button>
+                <label for="">Qty:</label>
+                <input type="number" name="quantity" id="" value="1" min="1" max="{{product.stock}}">
+              </form>
+
+            </div>
+            <div>
+              <p class="item7-para">
+                {{product.desc}}
+              </p>
+            </div>
+
+            <div class="item7-star-flex">
+              <a href="">Description</a>
+              <a href=""><i class="far fa-plus"></i></a>
+            </div>
+            <div class="item7-star-flex">
+              <a href="">Additional Information</a>
+              <a href=""><i class="far fa-plus"></i></a>
+            </div>
+            <div class="item7-star-flex">
+              <a href="">Reviews</a>
+              <div>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <a href=""><i class="far fa-plus"></i></a>
+              </div>
+            </div>
+            <div class="item7-share">
+              <a href="">SHARE</a>
+              <a href=""><i class="fa-brands fa-facebook"></i></a>
+              <a href=""><i class="fa-brands fa-twitter"></i></a>
+              <a href=""><i class="fa-brands fa-instagram"></i></a>
+              <a href=""><i class="fa-brands fa-pinterest-p"></i></a>
+              <a href=""><i class="fa-regular fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="item7-mt">
+        <div>
+          <p class="item7-rel-pdt">RELATED PRODUCT</p>
+        </div>
+        <div class="item7-grid5">
+          <div class="grid-class3-1 grid-class3-5">
+            <div class="img-div">
+              <img
+                class="image-size"
+                src="./images/beauty-products/970013559.jpg"
+                alt=""
+              />
+            </div>
+            <div class="icon-position">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="des-style">
+              <div class="item-link-cls">
+                <a href="">${product.name}</a>
+              </div>
+              <div class="item-price-cls">
+                <p class="item-price">${product.price}</p>
+              </div>
+              <div class="btn-desc-class">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag"
+                >
+                  <a
+                    href="#"
+                    class="minus js-minus-quantity"
+                    data-quantity-id="${product.id}"
+                    >&#8722;</a
+                  >
+                  <span class="one-span quantity-count-${product.id}">1</span>
+                  <a
+                    href="#"
+                    class="js-add-quantity"
+                    data-quantity-id="${product.id}"
+                    >+</a
+                  >
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag js-btn-cart"
+                  data-product-id="${product.id}"
+                >
+                  <span>ADD TO CART</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="grid-class3-1 grid-class3-5">
+            <div class="img-div">
+              <img
+                class="image-size"
+                src="./images/beauty-products/lotion-.jpg"
+                alt=""
+              />
+            </div>
+            <div class="icon-position">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="des-style">
+              <div class="item-link-cls">
+                <a href="">${product.name}</a>
+              </div>
+              <div class="item-price-cls">
+                <p class="item-price">${product.price}</p>
+              </div>
+              <div class="btn-desc-class">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag"
+                >
+                  <a
+                    href="#"
+                    class="minus js-minus-quantity"
+                    data-quantity-id="${product.id}"
+                    >&#8722;</a
+                  >
+                  <span class="one-span quantity-count-${product.id}">1</span>
+                  <a
+                    href="#"
+                    class="js-add-quantity"
+                    data-quantity-id="${product.id}"
+                    >+</a
+                  >
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag js-btn-cart"
+                  data-product-id="${product.id}"
+                >
+                  <span>ADD TO CART</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="grid-class3-1 grid-class3-5">
+            <div class="img-div">
+              <img
+                class="image-size"
+                src="./images/beauty-products/medix-lactic-acid.jpg"
+                alt=""
+              />
+            </div>
+            <div class="icon-position">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="des-style">
+              <div class="item-link-cls">
+                <a href="">${product.name}</a>
+              </div>
+              <div class="item-price-cls">
+                <p class="item-price">${product.price}</p>
+              </div>
+              <div class="btn-desc-class">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag"
+                >
+                  <a
+                    href="#"
+                    class="minus js-minus-quantity"
+                    data-quantity-id="${product.id}"
+                    >&#8722;</a
+                  >
+                  <span class="one-span quantity-count-${product.id}">1</span>
+                  <a
+                    href="#"
+                    class="js-add-quantity"
+                    data-quantity-id="${product.id}"
+                    >+</a
+                  >
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag js-btn-cart"
+                  data-product-id="${product.id}"
+                >
+                  <span>ADD TO CART</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="grid-class3-1 grid-class3-5">
+            <div class="img-div">
+              <img
+                class="image-size"
+                src="./images/beauty-products/extract.jpg"
+                alt=""
+              />
+            </div>
+            <div class="icon-position">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="des-style">
+              <div class="item-link-cls">
+                <a href="">${product.name}</a>
+              </div>
+              <div class="item-price-cls">
+                <p class="item-price">${product.price}</p>
+              </div>
+              <div class="btn-desc-class">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag"
+                >
+                  <a
+                    href="#"
+                    class="minus js-minus-quantity"
+                    data-quantity-id="${product.id}"
+                    >&#8722;</a
+                  >
+                  <span class="one-span quantity-count-${product.id}">1</span>
+                  <a
+                    href="#"
+                    class="js-add-quantity"
+                    data-quantity-id="${product.id}"
+                    >+</a
+                  >
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag js-btn-cart"
+                  data-product-id="${product.id}"
+                >
+                  <span>ADD TO CART</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="grid-class3-1 grid-class3-5">
+            <div class="img-div">
+              <img
+                class="image-size"
+                src="./images/beauty-products/products-Kuu-L-630x552-1.jpg"
+                alt=""
+              />
+            </div>
+            <div class="icon-position">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="des-style">
+              <div class="item-link-cls">
+                <a href="">${product.name}</a>
+              </div>
+              <div class="item-price-cls">
+                <p class="item-price">${product.price}</p>
+              </div>
+              <div class="btn-desc-class">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag"
+                >
+                  <a
+                    href="#"
+                    class="minus js-minus-quantity"
+                    data-quantity-id="${product.id}"
+                    >&#8722;</a
+                  >
+                  <span class="one-span quantity-count-${product.id}">1</span>
+                  <a
+                    href="#"
+                    class="js-add-quantity"
+                    data-quantity-id="${product.id}"
+                    >+</a
+                  >
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn1-tag js-btn-cart"
+                  data-product-id="${product.id}"
+                >
+                  <span>ADD TO CART</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+{% endblock content %}

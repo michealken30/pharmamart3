@@ -240,3 +240,10 @@ input {
 .paginate-div {
   margin-top: 10px;
 }
+
+.nav-icon
+a {
+  margin-right: 15px;
+  color: white;
+  text-decoration: none;
+}

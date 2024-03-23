@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>checkout Cat</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles/cat-head.css') }}" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}"/>
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles/checkout.css') }}"/>
+  </head>
+  <body>
+    <header class="fixed-position">
+      <div class="order-flex container">
+        <div class="nav-icon">
+          <a class="home-link" href="">Home</a>
+          <a href="">Shop</a>
+          <a href="">Contact</a>
+        </div>
+        <div class="logo">
+          <p>Great Caris <br />Pharmacy</p>
+        </div>
+        <div class="sign-in">
+               <a href="{{url_for('getcart')}}"><i class="fa-solid fa-cart-shopping mg-icon"></i>
+               <span class="abs-cls">{{session['Shoppingcart']|length}}</span></a>
+               {% if current_user.is_authenticated %}
+               <a class="sign-margin" href="{{url_for('customer_logout')}}">{{current_user.first_name}}</a>
+               <a class="sign-margin" href="{{url_for('customer_logout')}}">Sign out</a>
+               {% else %}
+               <a class="sign-margin" href="{{url_for('customerLogin')}}">Sign in</a>
+               {% endif %}
+        </div>
+      </div>
+      <div class="container">
+         <form action="{{url_for('result')}}">
+               <input class="input-st" type="text" placeholder="Search" name="q"/>
+               <button type="submit" class="icon-button">
+               <i class="fa-solid fa-magnifying-glass color-cls"></i>
+               </button>
+         </form>
+      </div>
+    </header>
+
+    <div class="heading-bg">
+      <h1>CHECKOUT</h1>
+    </div>
+     {% include '_message.html' %}
+    <section>
+      <div class="checkout-grid">
+        <div class="check3">
+          <form action="" class="check-input" method="post">
+            <div class="form-group group-top">
+              <label for="exampleInputPassword1" class="pass-check"
+                >Contact</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="{{user.email}}"
+                name="email"
+              />
+            </div>
+            <div class="form-group form-check">
+              <input
+                type="checkbox"
+                checked
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label" for="exampleCheck1"
+                >Email me with news and offers</label
+              >
+            </div>
+            <label for="inputState" class="dev-label">Delivery</label>
+              <select  id="inputCountry" name="country" class="form-control form-control-lg ">
+                <option value="" disabled selected>{{user.country}}</option>
+                <option value="Nigeria">Nigeria</option>
+              </select>
+
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control check10"
+                    id="inputEmail4"
+                    placeholder="{{user.first_name}}"
+                    name="first_name"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control check10"
+                    id="inputPassword4"
+                    placeholder="{{user.last_name}}"
+                    name="last_name"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputAddress"
+                  placeholder="{{user.address}}"
+                  name="address1"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputAddress2"
+                  placeholder="Apartment, studio, or floor"
+                  name="address2"
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputCity"
+                    placeholder="{{user.city}}"
+                    name="city"
+                  />
+                </div>
+                <div class="form-group col-md-4">
+                  <select name="state" id="inputState" class="form-control">
+                    <option value="" disabled selected>{{user.state}}</option>
+                    <option>Lagos</option>
+                    <option>Abuja</option>
+                    <option>Edo</option>
+                    <option>Rivers</option>
+                    <option>Enugu</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputZip"
+                    placeholder="{{user.zipcode}}"
+                    name="zip"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    checked
+                    id="gridCheck"
+                  />
+                  <label class="form-check-label" for="gridCheck">
+                    Check me out
+                  </label>
+                </div>
+              </div>
+
+          </form>
+
+          <div class="alert alert-dark mb-0" role="alert">
+            All delivery options are within Lagos. For delivery outside Lagos
+            click on the contact info link below.Thanks for your understanding
+          </div>
+
+          <div class="delivery-options">
+            <div class="delivery-options-title">Choose a delivery option:</div>
+
+            <div class="grid-option">
+              <div class="delivery-option">
+                <input
+                  type="radio"
+                  class="delivery-option-input"
+                  name="delivery-option-2"
+                  value="0.00"
+                />
+
+                <div>
+                  <div class="delivery-option-date">Delivery within 7 days</div>
+                  <div class="delivery-option-price">FREE Shipping</div>
+                </div>
+              </div>
+              <div class="delivery-option">
+                <input
+                  type="radio"
+
+                  class="delivery-option-input"
+                  name="delivery-option-2"
+                  value="1000"
+                />
+                <div>
+                  <div class="delivery-option-date">Delivery within 3 days</div>
+                  <div class="delivery-option-price">₦1000 - Shipping</div>
+                </div>
+              </div>
+              <div class="delivery-option">
+                <input
+                  type="radio"
+                  class="delivery-option-input"
+                  name="delivery-option-2"
+                  value="3000"
+                />
+                <div>
+                  <div class="delivery-option-date">Same day delivery</div>
+                  <div class="delivery-option-price">₦3000 - Shipping</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="check-select4">
+              <p class="check-select1">Payment</p>
+              <span class="check-select5">All transactions are secure</span>
+
+              <div
+                class="card border-secondary mt-3 mb-4"
+                style="max-width: 100%"
+              >
+                <div class="card-header">Bank Transfer</div>
+                <div class="card-body text-secondary">
+                  <p class="card-text">
+                    Use the Instant Transfer option to transfer the order total
+                    amount due to: Name: Supermart (S.E.S.L) Wallet Credits
+                    Account Number: 0153912558 Bank: GTB Use your name or email
+                    as a reference and email us at service@supermart.ng with the
+                    transfer receipt
+                  </p>
+                </div>
+              </div>
+              <a href="{{url_for('get_order')}}"><button
+
+                type="button"
+                class="btn btn-success btn-lg ft-size btn-block"
+              >
+                Complete Order
+              </button></a>
+
+              <div class="flex-check">
+                <a href="">Refund policy.</a>
+                <a href="">Privacy policy.</a>
+                <a href="">Terms of service</a>
+                <a href="">Contact information</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="check2">
+          <div class="your-order">Your Order</div>
+          {% for key, product in session['Shoppingcart'].items() %}
+          <div class="flex-check-display">
+            <div class="check-img-1">
+              <div class="card check-rel" style="width: 6rem">
+                <img
+                  src="{{url_for('static', filename='images1/' + product.image)}}"
+                  class="card-img-top check-img-wd"
+                  alt="..."
+                />
+                <span class="check-abosolute rounded-circle">{{product.quantity}}</span>
+              </div>
+            </div>
+            <div class="check-para3">
+              <p class="para7">{{product.name}}</p>
+            </div>
+            <div class="check-end1">
+              <span class="check-end">₦{{product.price}}</span>
+              <a class="anchor-block" href="{{ url_for('deleteitem', id=key, return_url=request.path) }}">Remove</a>
+            </div>
+          </div>
+          {% endfor %}
+          <form action="" class="form-style">
+            <input
+              type="text"
+              class="coupoun-input"
+              placeholder="Discount code or gift card"
+            />
+            <button type="button" class="btn btn-secondary coupon-btn">
+              Apply
+            </button>
+          </form>
+          <div class="check-total-flex">
+            <div class="check-total1">
+              <p>Subtotal</p>
+              <p>Shipping</p>
+              <p class="check-bold ">Total</p>
+            </div>
+
+            <div class="check-total2">
+              <p class="check-bold">₦{{grandtotal}}</p>
+              <p class="reverse-text js-option check-bold">chose a delivery option </p>
+              <p class="check-bold js-bold">₦{{grandtotal}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+
+ <script>
+
+  document.querySelectorAll(".delivery-option-input").forEach((link) => {
+    link.addEventListener("click", () => {
+      let value = parseInt(link.value);
+      let form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '(url_for('customerLogin'))';
+      let input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'value';
+      input.value = value;
+      form.appendChild(input);
+      document.body.appendChild(form);
+      form.submit();
+      document.querySelector(".js-option").innerHTML = "₦" + value;
+
+      let grandtotal = {{ grandtotal }};
+
+
+      let newValue = (grandtotal) + value;
+      document.querySelector(".js-bold").innerHTML = "₦" + newValue;
+    });
+  });
+
+</script>
+
+  </body>
+</html>

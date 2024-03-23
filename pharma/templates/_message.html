@@ -1,8 +1,8 @@
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
-    <ul class=flashes>
+    <ul class="flashes mb-0 mr-5"  style="list-style-type: none;">
     {% for category, message in messages %}
-      <li class=" alert alert-{{ category }}">{{ message }}</li>
+      <li class="alert alert-{{ category }} mb-0">{{ message }}</li>
     {% endfor %}
     </ul>
   {% endif %}

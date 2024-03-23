@@ -45,15 +45,20 @@
                <p>Great Caris <br />Pharmacy</p>
             </div>
             <div class="sign-in">
-               <i class="fa-solid fa-cart-shopping mg-icon"></i>
-               <a class="sign-margin" href="">Sign in</a>
-               <span class="abs-cls">3</span>
+               <a href="{{url_for('getcart')}}"><i class="fa-solid fa-cart-shopping mg-icon"></i>
+               <span class="abs-cls">{{session['Shoppingcart']|length}}</span></a>
+               {% if current_user.is_authenticated %}
+               <a class="sign-margin" href="{{url_for('customer_logout')}}">{{current_user.first_name}}</a>
+               <a class="sign-margin" href="{{url_for('customer_logout')}}">Sign out</a>
+               {% else %}
+               <a class="sign-margin" href="{{url_for('customerLogin')}}">Sign in</a>
+               {% endif %}
             </div>
          </div>
          <div class="container">
-            <form action="">
-               <input class="input-st" type="text" placeholder="Search" />
-               <button class="icon-button">
+            <form action="{{url_for('result', return_url=request.path )}}">
+               <input class="input-st" type="text" placeholder="Search" name="q"/>
+               <button type="submit" class="icon-button">
                <i class="fa-solid fa-magnifying-glass color-cls"></i>
                </button>
             </form>
