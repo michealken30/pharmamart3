@@ -45,10 +45,13 @@ STEP-2
     
 Perform all operations on the app
 pharmamart
-![Screenshot (1)](https://github.com/michealken30/pharmamart3/assets/134006096/7283ebfa-a7d5-46f2-8350-16793e6c9d88)
+
+
+![Screenshot (21)](https://github.com/michealken30/pharmamart3/assets/134006096/f15757d1-9eaa-4696-bbe0-520c735e2bdd)
 
 interact with Pharmamart health APP
-![Screenshot (3)](https://github.com/michealken30/pharmamart3/assets/134006096/f550b51f-b32f-48d6-bf80-49f4e59bdd8e)
+
+![Screenshot (20)](https://github.com/michealken30/pharmamart3/assets/134006096/1e6ee6e9-3458-4b48-a9d3-a3fdfff7a7e7)
 
 Author
 Micheal Oshogwe
