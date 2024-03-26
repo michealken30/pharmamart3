@@ -52,6 +52,7 @@ def customer_register():
         db.session.add(register)
         #flash(f'Welcome {form.first_name.data} Thank you for registering','success')
         db.session.commit()
+        #next = request.args.get('next')
         return redirect(url_for('customerLogin'))
     return render_template('customer/customer_reg.html', form=form)
 
@@ -68,6 +69,7 @@ def customerLogin():
             return redirect(next or url_for('home'))
         flash('incorrect email and password','danger')
         return redirect(url_for('customerLogin'))
+
     return render_template('customer/customer_login.html', form=form)
 
 @app.route('/customer/logout')
