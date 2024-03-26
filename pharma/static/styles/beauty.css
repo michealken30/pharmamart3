@@ -159,8 +159,8 @@ input {
 }
 .item-link-cls {
   margin-bottom: 10px;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .item-link-cls a:hover {
@@ -223,7 +223,7 @@ input {
 }
 
 .item-price-cls {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -231,6 +231,7 @@ input {
 
 .item-price {
   margin-bottom: 7px;
+
 }
 
 .paginate {

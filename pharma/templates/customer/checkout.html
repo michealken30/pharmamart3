@@ -70,7 +70,7 @@
     <section>
       <div class="checkout-grid">
         <div class="check3">
-          <form action="" class="check-input" method="post">
+          <form id="checkoutForm" action="{{url_for('get_order')}}" class="check-input" method="post">
             <div class="form-group group-top">
               <label for="exampleInputPassword1" class="pass-check"
                 >Contact</label
@@ -183,7 +183,7 @@
                 </div>
               </div>
 
-          </form>
+
 
           <div class="alert alert-dark mb-0" role="alert">
             All delivery options are within Lagos. For delivery outside Lagos
@@ -199,7 +199,7 @@
                   type="radio"
                   class="delivery-option-input"
                   name="delivery-option-2"
-                  value="0.00"
+                  value="0"
                 />
 
                 <div>
@@ -246,20 +246,21 @@
                 <div class="card-body text-secondary">
                   <p class="card-text">
                     Use the Instant Transfer option to transfer the order total
-                    amount due to: Name: Supermart (S.E.S.L) Wallet Credits
-                    Account Number: 0153912558 Bank: GTB Use your name or email
-                    as a reference and email us at service@supermart.ng with the
-                    transfer receipt
+                    amount due to: Name: Great Caris Pharmacy
+                    Account Number: 0178812558 Bank: GTB Use your name or email
+                    as a reference and email us at orders@greatcaris.ng with the
+                    transfer receipt or pay with card. Make sure you chose delivery option.
+                    Thanks for patronizing us.
                   </p>
                 </div>
               </div>
-              <a href="{{url_for('get_order')}}"><button
+              <button
 
-                type="button"
+                type="submit"
                 class="btn btn-success btn-lg ft-size btn-block"
               >
                 Complete Order
-              </button></a>
+              </button>
 
               <div class="flex-check">
                 <a href="">Refund policy.</a>
@@ -269,6 +270,7 @@
               </div>
             </div>
           </div>
+          </form>
         </div>
 
         <div class="check2">
@@ -340,16 +342,7 @@
   document.querySelectorAll(".delivery-option-input").forEach((link) => {
     link.addEventListener("click", () => {
       let value = parseInt(link.value);
-      let form = document.createElement('form');
-      form.method = 'POST';
-      form.action = '(url_for('customerLogin'))';
-      let input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = 'value';
-      input.value = value;
-      form.appendChild(input);
-      document.body.appendChild(form);
-      form.submit();
+
       document.querySelector(".js-option").innerHTML = "₦" + value;
 
       let grandtotal = {{ grandtotal }};
@@ -359,6 +352,28 @@
       document.querySelector(".js-bold").innerHTML = "₦" + newValue;
     });
   });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("checkoutForm");
+
+  form.addEventListener("submit", function(event) {
+    const deliveryOptions = document.querySelectorAll(".delivery-option-input");
+    let optionSelected = false;
+
+    deliveryOptions.forEach(function(option) {
+      if (option.checked) {
+        optionSelected = true;
+      }
+    });
+
+    if (!optionSelected) {
+      event.preventDefault(); // Prevent form submission
+      alert("Please select a delivery option."); // Display error message
+    }
+  });
+});
+
 
 </script>
 

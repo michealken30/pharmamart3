@@ -8,9 +8,9 @@
 {% block content %}
 <section>
    <div class="container cat-div">
-      <div class="cat1-div cat4-div"><a href="">SHOP BY CATEGORY</a></div>
+      <div class="cat1-div cat4-div"><a href="#select_category">SHOP BY CATEGORY</a></div>
       <div class="cat2-div cat4-div">
-         <a href="">BROWSE ALL</a>
+         <a href="{{url_for('allproduct')}}">BROWSE ALL</a>
       </div>
       <div class="cat3-div cat4-div">
          <a href="">CALL TO ORDER</a>
@@ -28,10 +28,10 @@
       </div>
    </div>
 </section>
-<section>
+<section >
    <div class="container">
       <div class="select-cat">
-         <p>SELECT A CATEGORY</p>
+         <p id="select_category">SELECT A CATEGORY</p>
       </div>
    </div>
 </section>
@@ -47,7 +47,7 @@
                   />
             </div>
             <div class="bt-div2">
-               <a href="./allproduct.html"
+               <a href="{{url_for('allproduct')}}"
                   ><button class="bt-div btn-div1">All Product</button></a
                   >
             </div>
@@ -57,7 +57,7 @@
                <img class="image-size" src="{{ url_for('static', filename='styles/beuty.jpg') }}" alt="" />
             </div>
             <div class="bt-div2">
-               <a href="./beauty.html"
+               <a href="{{url_for('beauty')}}"
                   ><button class="bt-div btn-div2">Beauty Category</button></a
                   >
             </div>
@@ -67,7 +67,7 @@
                <img class="image-size" src="{{ url_for('static', filename='styles/supermart.jpg') }}" alt="" />
             </div>
             <div class="bt-div2">
-               <a href="./market.html"
+               <a href="{{url_for('market')}}"
                   ><button class="bt-div btn-div3">
                Supermarket Category
                </button></a
@@ -79,7 +79,7 @@
                <img class="image-size" src="{{ url_for('static', filename='styles/health.jpg') }}" alt="" />
             </div>
             <div class="bt-div2">
-               <a href="./health.html"
+               <a href="{{url_for('health')}}"
                   ><button class="bt-div btn-div4">Health Category</button></a
                   >
             </div>

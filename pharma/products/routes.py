@@ -21,7 +21,7 @@ def save_picture(form_picture):
 
 
 @app.route('/home')
-#@app.route("/")
+@app.route("/")
 def home():
 
     return render_template('products/index.html')
@@ -31,7 +31,8 @@ def home():
 def allproduct():
     page = request.args.get('page',1,type=int)
     products = Addproduct.query.paginate(page=page, per_page=12)
-    return render_template('products/allproduct.html', title='All Products',products=products)
+    return render_template('products/allproduct.html', title='All Products'
+                           ,products=products)
 
 @app.route('/result')
 def result():
@@ -160,6 +161,10 @@ def deleteproduct(id):
 @app.route('/item/<int:id>')
 def item(id):
     product = Addproduct.query.get_or_404(id)
-    return render_template('products/item.html', product=product)
+    cat_id = product.category_id
+    random_products = Addproduct.query.filter_by(category_id=cat_id).order_by(db.func.random()).limit(5).all()
+
+    return render_template('products/item.html', product=product,
+                           random_products=random_products)
 
 

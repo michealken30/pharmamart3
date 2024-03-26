@@ -1,12 +1,14 @@
 {% extends 'base.html'%}
+
 {% block tittle %}
 <title>All Products</title>
 {% endblock %}
 {% block links %}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/beauty.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/modal.css') }}">
+
 {% endblock %}
 {% block content %}
+
 <main>
    <div class="container product-cont">
       <P class="product-style" >Products <span class="health-style">> ALL PRODUCTS</span></P>
@@ -114,9 +116,12 @@
                         <p class="item-price">₦{{product.price}}</p>
                      </div>
                      <div class="btn-desc-class">
-                        <form action="{{url_for('AddCart')}}" method="post">
+                        <form class="add-to-cart-form fetchForm" action="{{url_for('AddCart')}}" method="post"
+                              onsubmit="submitFormFetch();">
                          <input type="hidden" name="product_id" value="{{product.id}}">
-                         <button class="btn btn-outline-secondary btn1-tag col-6 ml-0 " type="submit">
+                           <input type="hidden" id="current-page-url" value="{{ request.path }}">
+                         <button class="btn btn-outline-secondary btn1-tag col-6 ml-0 "
+                                 data-target ="#exampleModal" type="submit">
                          ADD TO CART
                        </button>
                          <label for="">Qty:</label>
@@ -152,62 +157,12 @@
       {% endif %}
    </div>
 </section>
-<div
-   class="modal fade"
-   id="exampleModal"
-   tabindex="-1"
-   aria-labelledby="exampleModalLabel"
-   aria-hidden="true"
-   >
-   <div class="modal-dialog mr-0">
-      <div class="modal-content">
-         <div class="instock7">
-            <i class="fa-solid fa-check"></i>
-            <span>Item Added to cart</span>
-         </div>
-         <div class="modal-header head-mode">
-            <div>
-               <h5 class="modal-title" id="exampleModalLabel">Your Order</h5>
-               <p class="sub-modal">Subtotal</p>
-            </div>
-            <div class="mt-2">
-               <div class="sub-modal4"><a class="sub-modal1" style="color: black" >View Cart</a></div>
-               <span class="sub-modal2">#29000</span>
-            </div>
-         </div>
-         <div class="mb-3 mx-3 mt-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Add a note to your order</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-         </div>
-         <button type="button" class="btn btn-success ">Checkout</button>
-         <div class="pdt-modal">
-            Products (2)
-         </div>
-         <div class="modal-body">
-            <div class= "dis-2">
-               <div class="check-img-1">
-                  <div class="card check-rel" style="width: 5rem">
-                     <img
-                        src="./images/beauty-products/Bio-Oil-60ml.jpeg"
-                        class="card-img-top check-img-wd"
-                        alt="..."
-                        />
-                     <span class="check-abosolute rounded-circle">1</span>
-                  </div>
-               </div>
-               <div class="margin-para">
-                  <p class="para7">this is a coconut which is good for you</p>
-               </div>
-               <div class="mode-amount">
-                  <span class="">#1000</span>
-                  <a class="anchor-block" href="">Remove</a>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
+
 {% endblock %}
+
+
 {% block scripts %}
 <script type="module" src="{{ url_for('static', filename='scripts/all-products.js') }}"></script>
+
+
 {% endblock %}

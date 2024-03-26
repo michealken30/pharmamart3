@@ -1,4 +1,4 @@
-from flask import render_template, session, request, redirect, url_for, flash
+from flask import render_template, session, request, redirect, url_for, flash,jsonify
 
 from pharma import db, app
 from pharma.products.models import Addproduct
@@ -10,6 +10,8 @@ def MegerDicts(dict1, dict2):
     elif isinstance(dict1, dict) and isinstance(dict2, dict):
         return dict(list(dict1.items()) + list(dict2.items()))
     return False
+
+
 
 
 @app.route('/addcart', methods=['GET', 'POST'])
@@ -38,7 +40,7 @@ def AddCart():
 
                     else:
                         session['Shoppingcart'] = MegerDicts(session['Shoppingcart'], DictItems)
-                        return redirect(request.referrer)
+                        return redirect(request.referrer,)
                 else:
                     session['Shoppingcart'] = DictItems
                     return redirect(request.referrer)  # Added return
@@ -47,8 +49,11 @@ def AddCart():
     finally:
         return redirect(request.referrer)
 
+
 @app.route('/cart')
 def getcart():
+    random_products2 = Addproduct.query.order_by(db.func.random()).limit(2).all()
+    random_products = Addproduct.query.order_by(db.func.random()).limit(5).all()
     if 'Shoppingcart' not in session or len(session['Shoppingcart']) <= 0:
         return redirect(url_for('home'))
     grandtotal = 0
@@ -56,7 +61,9 @@ def getcart():
     for key, product in session['Shoppingcart'].items():
         grandtotal += float(product['price']) * int(product['quantity'])
         total_items += int(product['quantity'])
-    return render_template('products/cart.html', grandtotal=grandtotal, total_items=total_items)
+    return render_template('products/cart.html', grandtotal=grandtotal,
+                           total_items=total_items, random_products=random_products,
+                           random_products2=random_products2)
 
 
 @app.route('/updatecart/<int:code>', methods=['POST'])

@@ -47,12 +47,12 @@
           <div class="home-adrress">
             <i class="fa-solid fa-house home red-icon"></i>
             <span class="address-name"
-              >15b Admiralty Way, Lekki Phase 1, Lagos, Nigeria</span
+              >15 Appolo Street, Makoko Phase 1, Lagos, Nigeria</span
             >
           </div>
           <div class="phone-address">
             <i class="fa-solid fa-phone red-icon"></i>
-            <span class="address-name">(+234) 809 056 4568</span>
+            <span class="address-name">(+234) 789 066 5554</span>
           </div>
           <div class="order-address">
             <i class="fa-solid fa-envelope red-icon"></i>
@@ -74,13 +74,21 @@
               </div>
             </div>
             
-            <a href="">Wellness Blog</a>
-            <a href="#">Register</a>
-            <a href="">Login</a>
+            <a href="{{url_for('admin')}}">Admin</a>
+            <a href="{{url_for('customer_register')}}">Register</a>
+               <div class="sign-in">
+
+               {% if current_user.is_authenticated %}
+
+               <a class="sign-margin" href="{{url_for('customer_logout')}}">Sign out</a>
+               {% else %}
+               <a class="sign-margin" href="{{url_for('customerLogin')}}">Sign in</a>
+               {% endif %}
+            </div>
             <a href="">Contact</a>
           </div>
           <div class="button-div">
-            <a href="./order.html"><button class="btn-div">
+            <a href="{{url_for('order')}}"><button class="btn-div">
               Shop & Order<i class="fa-solid fa-cart-shopping mg-icon"></i>
             </button></a>
           </div>
@@ -125,7 +133,7 @@
               <div class="carousel-caption d-none d-md-block">
                 <h5 class="carousel-t1" >More Vitamin Better health</h5>
                 <p class="carousel-t2" >Noursih Yourself with the best vitamins</p>
-                <a href="./order.html"><button type="button" class="btn btn-secondary">Shop & Order</button></a>
+                <a href="{{url_for('order')}}"><button type="button" class="btn btn-secondary">Shop & Order</button></a>
               </div>
             </div>
             <div class="carousel-item">
@@ -137,7 +145,7 @@
               <div class="carousel-caption d-none d-md-block">
                 <h5 class="carousel-t1" >Lets Get Your health Right</h5>
                 <p class="carousel-t2"  >Living well is living healthy</p>
-                <a href="./order.html"><button type="button" class="btn btn-secondary">Shop Now</button></a>
+                <a href="{{url_for('order')}}"><button type="button" class="btn btn-secondary">Shop Now</button></a>
               </div>
             </div>
           </div>
@@ -180,7 +188,7 @@
           <div class="grid-div">
             <div class="one">
               <a class="link-one" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-              <a class="link-one" href="./order.html">Shop & Order</a>
+              <a class="link-one" href="{{url_for('order')}}">Shop & Order</a>
             </div>
             <div class="one two">
               <a class="link-one" href="#">

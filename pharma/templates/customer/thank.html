@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+<style>
+   .container {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    width: 18rem;
+  }
+</style>
+
+{% block content %}
+<div class="container mt-10">
+ <div class="card text-center mt-5">
+  <div class="card-header" style="font-size: 24px;">
+    Thank you for your Patronage
+  </div>
+  <div class="card-body">
+
+    <p class="card-text fs-6" style="font-size: 18px;">We are always at your service at Great Caris
+        Pharmacy. <br> You can print your paid invoice by clicking the button
+        below and get pdf </p>
+    <a href="#"  onclick="goBack()" class="btn btn-primary">Paid Invoice</a>
+  </div>
+
+</div>
+</div>
+<script>
+function goBack() {
+  window.history.back();
+
+
+}
+</script>
+{% endblock %}

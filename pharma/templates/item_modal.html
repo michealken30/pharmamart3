@@ -1,0 +1,189 @@
+
+
+    <style>
+
+      dialog {
+        margin: 0; /* `margin: auto;` is the default. */
+        transform: translateX(-50%);
+        left: 90%;
+        margin-right: 0;
+       }
+
+      [data-modal] {
+        border: none;
+      }
+
+
+      [data-modal] {
+        position: fixed;
+        top: 0;
+        right: 0;
+      }
+
+      .head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-div,
+      .total-bill {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .third-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+
+
+      .dis-2 {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+
+      .margin-para {
+        margin-top: 2px;
+        padding-left: 2px;
+        margin-right: 2px;
+        max-width: 200px;
+      }
+
+      .para7 {
+        margin-left: 2px;
+        width: 150px;
+        color: black;
+        font-weight: 600;
+      }
+
+      .check-img-1 {
+        margin-right: 2px;
+      }
+
+      .mode-amount {
+        margin-top: 2px;
+        color: black;
+        font-weight: 500;
+      }
+
+      .anchor-block {
+        display: block;
+        color: rgb(179, 169, 169);
+        margin-top: 25px;
+        font-size: 14px;
+      }
+
+      .instock7 {
+        color: rgb(177, 0, 168);
+        font-size: 13px;
+        font-weight: 500;
+        margin-left: 20px;
+      }
+
+      .sub-modal {
+        margin-top: 10px;
+      }
+
+      .sub-modal1 {
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      .sub-modal1:hover {
+        text-decoration: underline;
+      }
+
+      .sub-modal2 {
+        font-weight: 600;
+      }
+
+      .sub-modal4 {
+        margin-bottom: 10px;
+      }
+
+      .btn-modal-flex8{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 5px;
+      }
+
+      .btn-success {
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-top: 3px;
+        margin-bottom: 10px;
+      }
+
+      .pdt-modal {
+        margin-top: 4px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        font-weight: 600;
+        color: rgb(170, 163, 163);
+      }
+
+    </style>
+
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+
+    <dialog data-modal>
+      <div class="data-modal">
+        <div class="instock7">
+          <i class="fa-solid fa-check"></i>
+          <span>Item Added to cart</span>
+        </div>
+        <div class="modal-header head-mode">
+          <div>
+            <h5 class="modal-title" id="exampleModalLabel">Your Order</h5>
+            <p class="sub-modal">Subtotal</p>
+          </div>
+          <div class="mt-2">
+            <div class="sub-modal4">
+              <a class="sub-modal1" style="color: black">View Cart</a>
+            </div>
+            <span class="sub-modal2">#29000</span>
+          </div>
+        </div>
+        <div class="mb-3 mx-3 mt-3">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Add a note to your order</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="btn-modal-flex8">
+        <button type="button" class="btn btn-success px-5">Checkout</button>
+
+
+        <button type="button" data-close-modal class="btn btn-secondary mb-2">close</button>
+      </div>
+          </div>
+
+    </dialog>
+
+    <script>
+      const openButton = document.querySelector("[data-open-modal]");
+      const closeButton = document.querySelector("[data-close-modal]");
+      const modal = document.querySelector("[data-modal]");
+
+      openButton.addEventListener("click", () => {
+        modal.showModal();
+      });
+
+      closeButton.addEventListener("click", () => {
+        modal.close();
+      });
+    </script>
+

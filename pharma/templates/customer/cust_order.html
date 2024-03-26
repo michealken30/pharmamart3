@@ -4,36 +4,36 @@
 {% include '_message.html' %}
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Admin</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <a class="navbar-brand" href="{{url_for('allproduct')}}">Great Caris Pharmacy</a>
+
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+
+
+
     </ul>
   </div>
 </nav>
 </div>
 <div class="container mt-3">
+    <div class="row">
+    <div class="col-md-12">
+        Invoice: {{orders.invoice}}
+        <br>
+        Status: {{orders.status}}
+        <br>
+        Customer name: {{customer.first_name + " " + customer.last_name}}
+        <br>
+        Customer email: {{customer.email}}
+        <br>
+        Customer contact: {{customer.contact}}
+        <br>
+        Date Created: {{ customer.date_created.strftime('%Y-%m-%d') }}
+        <br>
+        <br>
     <table class="table table-sm table-condensed table-striped">
         <thead>
             <th>Sr</th>
@@ -49,16 +49,48 @@
         <tr>
             <td>{{loop.index}}</td>
              <td>{{product.name}}</td>
-             <td>${{product.price}}</td>
-             <td>{{product.subtotal}}</td>
+             <td>₦{{product.price}}</td>
+            <td>{{product.quantity}}</td>
+             <td>₦{{ product.quantity|int * product.price|int }}</td>
 
         </tr>
            <!-- Button trigger modal -->
-
-
-
         {% endfor %}
         </tbody>
     </table>
+    <table class="table table-sm">
+        <tr>
+        <td>
+            {% if orders.status == 'Paid'%}
+
+            {% else%}
+            <form action="{{url_for('payment')}}" method="POST">
+            <input type="hidden" name="amount" value="{{grandTotal}}">
+            <input type="hidden" name="invoice" value="{{orders.invoice}}">
+  <script
+    src="https://checkout.stripe.com/checkout.js"
+    class="stripe-button"
+    data-key="pk_test_51OxWPq02FNxgPW4uy85jCIUlQRQyCX6FUOdwft1WvEuFwKllopJV4fYOX74t7dn4yiOvTNVzJHWqkVnm29kIMRP600lPrwd1Lb"
+    data-name="Great Caris Pharmacy"
+    data-description="Health And Wellbeing"
+    data-amount="{{grandTotal * 100}}"
+    data-currency="usd"
+    data-label="Pay with card">
+  </script>
+</form>
+            {% endif %}
+        </td>
+        <td width="35"></td>
+        <td><h5>Shipping: ₦{{value}}</h5></td>
+        <td><h5>Grand Total: ₦{{grandTotal}}</h5></td>
+        <td>
+            <form action="{{url_for('get_pdf', invoice=orders.invoice, value=value )}}" method="post">
+                <button class="btn btn-info btn-sm float-right mr-8" type="submit">Get pdf</button>
+            </form>
+        </td>
+        </tr>
+    </table>
+    </div>
+    </div>
 </div>
 {% endblock content %}
